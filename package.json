@@ -1,0 +1,14 @@
+{
+  "name": "mallnest",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "app": "npm run start -w @mallnest/app",
+    "business": "npm run start -w @mallnest/business",
+    "typecheck": "npm run typecheck -w @mallnest/app && npm run typecheck -w @mallnest/business",
+    "lint": "npm run lint -w @mallnest/app && npm run lint -w @mallnest/business"
+  }
+}
