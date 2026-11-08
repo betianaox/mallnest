@@ -1,10 +1,13 @@
-import type { ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import {
+  Image,
   Pressable,
   StyleSheet,
   Text,
   TextInput,
   View,
+  type ImageStyle,
   type StyleProp,
   type TextStyle,
   type ViewStyle,
@@ -13,6 +16,7 @@ import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
 
 import { font, radius, spacing, withAlpha } from '../theme';
 import { useTheme } from '../theme-context';
+import type { StoreBrand } from '@mallnest/core';
 
 // Componentes base. Todos toman los colores del tema activo
 // (Mallnest en el listado, la marca de la tienda dentro de una tienda).
@@ -175,21 +179,100 @@ export function FeaturedBadge() {
 }
 
 /** Reemplaza las fotos mientras no haya imágenes reales de Shopify. */
-export function ImagePlaceholder({
+type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
+
+function hashText(text: string): number {
+  let h = 0;
+  for (let i = 0; i < text.length; i++) h = (h * 31 + text.charCodeAt(i)) >>> 0;
+  return h;
+}
+
+/**
+ * Imagen de un producto. Si hay foto (`image`, que vendrá de Shopify) la muestra;
+ * si no, dibuja una ilustración: el icono del producto sobre un fondo con los
+ * colores de la tienda y dos formas suaves que cambian según el producto, para
+ * que una grilla no se vea repetida. Sin icono, usa la inicial.
+ */
+export function ProductArt({
   label,
+  icon,
+  image,
+  brand,
   height = 140,
+  compact = false,
   style,
 }: {
   label: string;
+  icon?: string;
+  image?: string;
+  /** Colores de otra tienda (en el buscador de Mallnest, que usa el tema de la plataforma). */
+  brand?: Pick<StoreBrand, 'primary' | 'secondary'>;
   height?: number;
+  compact?: boolean;
   style?: StyleProp<ViewStyle>;
 }) {
   const theme = useTheme();
+  const primary = brand?.primary ?? theme.primary;
+  const secondary = brand?.secondary ?? theme.secondary;
+  if (image) {
+    return (
+      <Image
+        source={{ uri: image }}
+        accessibilityLabel={label}
+        style={[styles.placeholder, { height, backgroundColor: secondary }, style as StyleProp<ImageStyle>]}
+      />
+    );
+  }
+  const h = hashText(label);
+  const big = height * (compact ? 0.9 : 1.05);
+  const small = height * (compact ? 0.45 : 0.55);
+  const flip = h % 2 === 0;
+  const glyph = icon && icon in MaterialCommunityIcons.glyphMap ? (icon as IconName) : null;
   return (
-    <View style={[styles.placeholder, { height, backgroundColor: theme.secondary }, style]}>
-      <Text style={{ color: theme.primary, fontWeight: '700', fontSize: 28, opacity: 0.55 }}>
-        {label.slice(0, 1).toUpperCase()}
-      </Text>
+    <View
+      accessible
+      accessibilityLabel={label}
+      style={[styles.placeholder, { height, backgroundColor: secondary, overflow: 'hidden' }, style]}
+    >
+      <View
+        style={{
+          position: 'absolute',
+          width: big,
+          height: big,
+          borderRadius: big / 2,
+          backgroundColor: withAlpha(primary, 0.1),
+          top: -big * (0.25 + (h % 7) / 40),
+          [flip ? 'right' : 'left']: -big * 0.3,
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          width: small,
+          height: small,
+          borderRadius: small / 2,
+          backgroundColor: withAlpha('#FFFFFF', 0.55),
+          bottom: -small * 0.3,
+          [flip ? 'left' : 'right']: -small * (0.1 + (h % 5) / 20),
+        }}
+      />
+      {glyph ? (
+        <MaterialCommunityIcons name={glyph} size={Math.round(height * (compact ? 0.5 : 0.44))} color={primary} />
+      ) : (
+        <Text style={{ color: primary, fontWeight: '700', fontSize: Math.round(height * 0.24), opacity: 0.7 }}>
+          {label.slice(0, 1).toUpperCase()}
+        </Text>
+      )}
+    </View>
+  );
+}
+
+/** Ilustración grande y translúcida para el fondo de un banner. */
+export function BannerArt({ icon, color }: { icon?: string; color: string }) {
+  if (!icon || !(icon in MaterialCommunityIcons.glyphMap)) return null;
+  return (
+    <View pointerEvents="none" style={styles.bannerArt}>
+      <MaterialCommunityIcons name={icon as IconName} size={150} color={withAlpha(color, 0.22)} />
     </View>
   );
 }
@@ -251,6 +334,7 @@ const styles = StyleSheet.create({
   },
   badge: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: radius.pill, alignSelf: 'flex-start' },
   placeholder: { borderRadius: radius.md, alignItems: 'center', justifyContent: 'center' },
+  bannerArt: { position: 'absolute', right: -18, top: -10 },
   iconButton: { padding: spacing.xs, minWidth: 32, alignItems: 'center' },
   iconBadge: {
     position: 'absolute',

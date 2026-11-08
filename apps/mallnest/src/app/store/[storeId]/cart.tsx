@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import { FlatList, StyleSheet, View } from 'react-native';
 
 import { StoreHeader } from '@/components/store-header';
-import { Button, IconButton, ImagePlaceholder, Screen, Txt, useTheme } from '@mallnest/ui';
+import { Button, IconButton, ProductArt, Screen, Txt, useTheme } from '@mallnest/ui';
 import { formatPrice } from '@/services/catalog';
 import { useAppState } from '@/state/app-state';
 import { useStore } from '@/state/store-context';
@@ -36,7 +36,7 @@ export default function CartScreen() {
             .join(' · ');
           return (
             <View style={[styles.line, { backgroundColor: theme.surface, borderColor: theme.border }]}>
-              <ImagePlaceholder label={item.title} height={64} style={{ width: 64 }} />
+              <ProductArt label={item.title} icon={item.icon} image={item.image} height={64} compact style={{ width: 64 }} />
               <View style={{ flex: 1, gap: 2 }}>
                 <Txt variant="label" numberOfLines={1}>
                   {item.title}

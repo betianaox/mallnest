@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { StoreHeader } from '@/components/store-header';
-import { Button, Chip, ImagePlaceholder, Screen, Txt, useAsync, useTheme } from '@mallnest/ui';
+import { Button, Chip, ProductArt, Screen, Txt, useAsync, useTheme } from '@mallnest/ui';
 import { formatPrice, getProduct } from '@/services/catalog';
 import { useAppState } from '@/state/app-state';
 import { useStore } from '@/state/store-context';
@@ -50,6 +50,8 @@ export default function ProductScreen() {
       currency: product.currency,
       quantity: 1,
       selectedOptions: selected,
+      icon: product.icon,
+      image: product.image,
     });
     setAdded(true);
   };
@@ -58,7 +60,7 @@ export default function ProductScreen() {
     <Screen>
       <StoreHeader showBack title="" />
       <ScrollView contentContainerStyle={styles.content}>
-        <ImagePlaceholder label={product.title} height={300} />
+        <ProductArt label={product.title} icon={product.icon} image={product.image} height={300} />
         <View style={{ gap: spacing.xs }}>
           <Txt variant="hero">{product.title}</Txt>
           <Txt variant="title" style={{ color: theme.primary }}>

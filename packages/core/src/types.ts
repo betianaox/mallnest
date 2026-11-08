@@ -5,7 +5,7 @@
 
 export type StoreStatus = 'pending' | 'approved';
 
-export type StoreCategory = 'Moda' | 'Cafetería' | 'Deco' | 'Otros';
+export type StoreCategory = 'Moda' | 'Cafetería' | 'Deco' | 'Pastelería' | 'Mascotas' | 'Otros';
 
 export interface StoreBrand {
   /** Color principal (botones, acentos). */
@@ -26,6 +26,10 @@ export interface Banner {
   subtitle?: string;
   /** Colección a la que lleva el banner. */
   collectionId?: string;
+  /** Ilustración del banner (nombre de un icono) mientras no haya foto. */
+  icon?: string;
+  /** Foto del banner; si está, reemplaza a la ilustración. */
+  image?: string;
 }
 
 export interface StoreVitrina {
@@ -72,6 +76,10 @@ export interface Product {
   price: number;
   currency: string;
   options: ProductVariantOption[];
+  /** Ilustración del producto (nombre de un icono) mientras no haya foto. */
+  icon?: string;
+  /** Foto del producto (de Shopify); si está, reemplaza a la ilustración. */
+  image?: string;
 }
 
 export interface CartLine {
@@ -80,6 +88,8 @@ export interface CartLine {
   price: number;
   currency: string;
   quantity: number;
+  icon?: string;
+  image?: string;
   /** Variante elegida, ej: { Talle: "M", Color: "Negro" } */
   selectedOptions: Record<string, string>;
 }

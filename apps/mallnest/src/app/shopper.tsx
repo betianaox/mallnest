@@ -5,7 +5,7 @@ import { FlatList, KeyboardAvoidingView, Platform, Pressable, StyleSheet, View }
 import {
   Button,
   IconButton,
-  ImagePlaceholder,
+  ProductArt,
   Screen,
   SearchBar,
   StoreLogo,
@@ -136,7 +136,7 @@ export default function ShopperScreen() {
                     { backgroundColor: platformTheme.surface, borderColor: platformTheme.border },
                   ]}
                 >
-                  <ImagePlaceholder label={item.title} height={64} style={{ width: 64 }} />
+                  <ProductArt label={item.title} icon={item.icon} image={item.image} brand={store?.brand} height={64} compact style={{ width: 64 }} />
                   <View style={{ flex: 1, gap: 2 }}>
                     <Txt variant="label" numberOfLines={1}>
                       {item.title}

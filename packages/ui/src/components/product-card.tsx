@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { ImagePlaceholder, Txt } from './ui';
+import { ProductArt, Txt } from './ui';
 import { formatPrice, type Product } from '@mallnest/core';
 import { radius, spacing } from '../theme';
 import { useTheme } from '../theme-context';
@@ -17,7 +17,7 @@ export function ProductCard({ product, onPress }: { product: Product; onPress: (
         { backgroundColor: theme.surface, borderColor: theme.border, opacity: pressed ? 0.85 : 1 },
       ]}
     >
-      <ImagePlaceholder label={product.title} height={130} />
+      <ProductArt label={product.title} icon={product.icon} image={product.image} height={130} />
       <View style={styles.info}>
         <Txt variant="label" numberOfLines={2}>
           {product.title}

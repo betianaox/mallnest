@@ -34,6 +34,16 @@ const TAGLINES: Record<string, string[]> = {
     'Deco simple para espacios con calma',
     'Detalles que transforman tus ambientes',
   ],
+  Pastelería: [
+    'Tortas y masas horneadas cada mañana',
+    'Lo dulce, hecho a mano y con buena manteca',
+    'Para celebrar o para la merienda de todos los días',
+  ],
+  Mascotas: [
+    'Todo para tu perro y tu gato, en un solo lugar',
+    'Alimento, juguetes y mimos para tu mascota',
+    'Porque ellos también se merecen lo mejor',
+  ],
   Otros: ['Productos elegidos con dedicación', 'Lo que buscás, en un solo lugar', 'Calidad y buena atención'],
 };
 

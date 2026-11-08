@@ -1,8 +1,60 @@
 import { type Store } from '@mallnest/core';
 
-// Tres tiendas de ejemplo (decisión 11). Son ficticias y se muestran como demo.
+// Tiendas de ejemplo (decisión 11). Son ficticias y se muestran como demo.
 // Más adelante este listado lo devuelve el backend en AWS.
 export const DEMO_STORES: Store[] = [
+  {
+    id: 'dulce',
+    slug: 'dulce-horno',
+    name: 'Dulce Horno',
+    tagline: 'Pastelería artesanal, horneada cada mañana',
+    category: 'Pastelería',
+    brand: {
+      primary: '#BE185D',
+      secondary: '#FCE7F1',
+      background: '#FFF7FA',
+      text: '#3B0A22',
+      logoText: 'DH',
+    },
+    vitrina: {
+      banners: [
+        { id: 'b1', title: 'Tortas por encargo', subtitle: 'Con 48 h de anticipación', collectionId: 'dulce-tortas', icon: 'cake-variant' },
+        { id: 'b2', title: 'Cajas para regalar', subtitle: 'Desayunos y meriendas', collectionId: 'dulce-cajas', icon: 'gift-outline' },
+      ],
+      featuredCollectionIds: ['dulce-tortas', 'dulce-masas', 'dulce-cajas'],
+    },
+    createdAt: '2026-11-07',
+    featured: true,
+    sortScore: 5,
+    status: 'approved',
+    isDemo: true,
+  },
+  {
+    id: 'patitas',
+    slug: 'patitas',
+    name: 'Patitas',
+    tagline: 'Todo para tu perro y tu gato, con envío en el día',
+    category: 'Mascotas',
+    brand: {
+      primary: '#0F766E',
+      secondary: '#D5F2EE',
+      background: '#F4FBFA',
+      text: '#0B2724',
+      logoText: 'P',
+    },
+    vitrina: {
+      banners: [
+        { id: 'b1', title: 'Semana del perro', subtitle: '15 % en alimentos', collectionId: 'patitas-perros', icon: 'dog' },
+        { id: 'b2', title: 'Mundo gato', subtitle: 'Rascadores y snacks', collectionId: 'patitas-gatos', icon: 'cat' },
+      ],
+      featuredCollectionIds: ['patitas-perros', 'patitas-gatos', 'patitas-juguetes'],
+    },
+    createdAt: '2026-11-07',
+    featured: true,
+    sortScore: 4,
+    status: 'approved',
+    isDemo: true,
+  },
   {
     id: 'aurora',
     slug: 'aurora-studio',
@@ -18,8 +70,8 @@ export const DEMO_STORES: Store[] = [
     },
     vitrina: {
       banners: [
-        { id: 'b1', title: 'Nueva temporada', subtitle: 'Primavera / verano', collectionId: 'aurora-new' },
-        { id: 'b2', title: 'Básicos', subtitle: 'Los que nunca fallan', collectionId: 'aurora-basics' },
+        { id: 'b1', title: 'Nueva temporada', subtitle: 'Primavera / verano', collectionId: 'aurora-new', icon: 'hanger' },
+        { id: 'b2', title: 'Básicos', subtitle: 'Los que nunca fallan', collectionId: 'aurora-basics', icon: 'tshirt-crew' },
       ],
       featuredCollectionIds: ['aurora-new', 'aurora-basics'],
     },
@@ -49,6 +101,7 @@ export const DEMO_STORES: Store[] = [
           title: 'Tostado de la semana',
           subtitle: 'Etiopía Yirgacheffe',
           collectionId: 'grano-coffee',
+          icon: 'coffee',
         },
       ],
       featuredCollectionIds: ['grano-coffee', 'grano-gear'],
@@ -74,8 +127,8 @@ export const DEMO_STORES: Store[] = [
     },
     vitrina: {
       banners: [
-        { id: 'b1', title: 'Luz cálida', subtitle: 'Lámparas y velas', collectionId: 'lumen-light' },
-        { id: 'b2', title: 'Textiles', subtitle: 'Mantas y almohadones', collectionId: 'lumen-textile' },
+        { id: 'b1', title: 'Luz cálida', subtitle: 'Lámparas y velas', collectionId: 'lumen-light', icon: 'floor-lamp' },
+        { id: 'b2', title: 'Textiles', subtitle: 'Mantas y almohadones', collectionId: 'lumen-textile', icon: 'sofa' },
       ],
       featuredCollectionIds: ['lumen-light', 'lumen-textile'],
     },

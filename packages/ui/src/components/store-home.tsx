@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { ProductCard } from './product-card';
-import { Txt } from './ui';
+import { BannerArt, Txt } from './ui';
 import { radius, spacing, withAlpha } from '../theme';
 import { useTheme } from '../theme-context';
 import type { Collection, Product, Store } from '@mallnest/core';
@@ -55,6 +55,11 @@ export function StoreHome({
               onPress={() => banner.collectionId && onOpenCollection?.(banner.collectionId)}
               style={[styles.banner, { backgroundColor: theme.primary }]}
             >
+              {banner.image ? (
+                <Image source={{ uri: banner.image }} style={StyleSheet.absoluteFill} />
+              ) : (
+                <BannerArt icon={banner.icon} color={theme.onPrimary} />
+              )}
               <Txt variant="title" style={{ color: theme.onPrimary }}>
                 {banner.title}
               </Txt>
@@ -107,6 +112,7 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     justifyContent: 'flex-end',
     gap: 2,
+    overflow: 'hidden',
   },
   sectionHeader: {
     flexDirection: 'row',

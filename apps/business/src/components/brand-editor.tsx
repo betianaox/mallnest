@@ -9,7 +9,7 @@ import { useMerchant } from '@/state/merchant-state';
 import { radius, spacing } from '@/theme';
 import { type StoreCategory } from '@mallnest/core';
 
-const CATEGORIES: StoreCategory[] = ['Moda', 'Cafetería', 'Deco', 'Otros'];
+const CATEGORIES: StoreCategory[] = ['Moda', 'Cafetería', 'Pastelería', 'Deco', 'Mascotas', 'Otros'];
 
 /**
  * Edición de la marca: nombre, frase, rubro, logo y color.
