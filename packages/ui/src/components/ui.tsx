@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
   View,
+  type ImageSourcePropType,
   type ImageStyle,
   type StyleProp,
   type TextStyle,
@@ -16,7 +17,7 @@ import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
 
 import { font, radius, spacing, withAlpha } from '../theme';
 import { useTheme } from '../theme-context';
-import type { StoreBrand } from '@mallnest/core';
+import type { ImageRef, StoreBrand } from '@mallnest/core';
 
 // Componentes base. Todos toman los colores del tema activo
 // (Mallnest en el listado, la marca de la tienda dentro de una tienda).
@@ -179,6 +180,11 @@ export function FeaturedBadge() {
 }
 
 /** Reemplaza las fotos mientras no haya imágenes reales de Shopify. */
+/** Convierte una ImageRef (URL o recurso empaquetado) en la fuente de <Image>. */
+export function imageSource(ref: ImageRef): ImageSourcePropType {
+  return typeof ref === 'string' ? { uri: ref } : ref;
+}
+
 type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
 
 function hashText(text: string): number {
@@ -204,7 +210,7 @@ export function ProductArt({
 }: {
   label: string;
   icon?: string;
-  image?: string;
+  image?: ImageRef;
   /** Colores de otra tienda (en el buscador de Mallnest, que usa el tema de la plataforma). */
   brand?: Pick<StoreBrand, 'primary' | 'secondary'>;
   height?: number;
@@ -217,9 +223,10 @@ export function ProductArt({
   if (image) {
     return (
       <Image
-        source={{ uri: image }}
+        source={imageSource(image)}
+        resizeMode="cover"
         accessibilityLabel={label}
-        style={[styles.placeholder, { height, backgroundColor: secondary }, style as StyleProp<ImageStyle>]}
+        style={[styles.placeholder, { width: '100%', height, backgroundColor: secondary }, style as StyleProp<ImageStyle>]}
       />
     );
   }

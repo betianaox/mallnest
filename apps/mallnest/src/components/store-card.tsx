@@ -1,6 +1,6 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 
-import { DemoBadge, FeaturedBadge, StoreLogo, Txt, useTheme } from '@mallnest/ui';
+import { DemoBadge, FeaturedBadge, StoreLogo, Txt, imageSource, useTheme } from '@mallnest/ui';
 import { radius, spacing } from '@/theme';
 import { type Store } from '@mallnest/core';
 
@@ -18,7 +18,16 @@ export function StoreCard({ store, onPress }: { store: Store; onPress: () => voi
       ]}
     >
       <View style={[styles.cover, { backgroundColor: store.brand.background }]}>
-        <StoreLogo brand={store.brand} size={56} />
+        {store.cover !== undefined ? (
+          <>
+            <Image source={imageSource(store.cover)} resizeMode="cover" style={styles.fill} />
+            <View style={styles.logoOnPhoto}>
+              <StoreLogo brand={store.brand} size={40} />
+            </View>
+          </>
+        ) : (
+          <StoreLogo brand={store.brand} size={56} />
+        )}
       </View>
       <View style={styles.body}>
         <View style={styles.badges}>
@@ -42,6 +51,16 @@ export function StoreCard({ store, onPress }: { store: Store; onPress: () => voi
 const styles = StyleSheet.create({
   card: { flex: 1, borderRadius: radius.lg, borderWidth: 1, overflow: 'hidden' },
   cover: { height: 110, alignItems: 'center', justifyContent: 'center' },
+  fill: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' },
+  logoOnPhoto: {
+    position: 'absolute',
+    left: spacing.sm,
+    bottom: spacing.sm,
+    borderRadius: radius.md,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    overflow: 'hidden',
+  },
   body: { padding: spacing.md, gap: 4 },
   badges: { flexDirection: 'row', gap: spacing.xs, minHeight: 0 },
 });

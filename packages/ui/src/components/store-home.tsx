@@ -1,7 +1,7 @@
 import { Image, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { ProductCard } from './product-card';
-import { BannerArt, Txt } from './ui';
+import { BannerArt, Txt, imageSource } from './ui';
 import { radius, spacing, withAlpha } from '../theme';
 import { useTheme } from '../theme-context';
 import type { Collection, Product, Store } from '@mallnest/core';
@@ -37,6 +37,12 @@ export function StoreHome({
         </View>
       ) : null}
 
+      {store.cover !== undefined ? (
+        <View style={[styles.cover, { backgroundColor: theme.secondary }]}>
+          <Image source={imageSource(store.cover)} resizeMode="cover" style={styles.fill} />
+        </View>
+      ) : null}
+
       <View style={{ gap: spacing.xs, paddingHorizontal: spacing.lg }}>
         <Txt variant="hero">{store.name}</Txt>
         <Txt variant="muted">{store.tagline}</Txt>
@@ -56,7 +62,10 @@ export function StoreHome({
               style={[styles.banner, { backgroundColor: theme.primary }]}
             >
               {banner.image ? (
-                <Image source={{ uri: banner.image }} style={StyleSheet.absoluteFill} />
+                <>
+                  <Image source={imageSource(banner.image)} resizeMode="cover" style={styles.fill} />
+                  <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.38)' }]} />
+                </>
               ) : (
                 <BannerArt icon={banner.icon} color={theme.onPrimary} />
               )}
@@ -104,6 +113,8 @@ export function StoreHome({
 }
 
 const styles = StyleSheet.create({
+  fill: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' },
+  cover: { height: 170, marginHorizontal: spacing.lg, borderRadius: radius.lg, overflow: 'hidden' },
   demo: { marginHorizontal: spacing.lg, padding: spacing.md, borderRadius: radius.md },
   banner: {
     width: 280,

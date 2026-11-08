@@ -1,5 +1,7 @@
 import { type Collection, type Product } from '@mallnest/core';
 
+import { PHOTOS } from './photos';
+
 // Catálogo de ejemplo. Más adelante sale de la Storefront API de Shopify de cada tienda.
 
 export const DEMO_COLLECTIONS: Collection[] = [
@@ -23,6 +25,7 @@ export const DEMO_PRODUCTS: Product[] = [
   // Dulce Horno
   {
     id: 'p-dulce-1',
+    image: PHOTOS.rogel,
     storeId: 'dulce',
     collectionIds: ['dulce-tortas'],
     title: 'Torta rogel',
@@ -34,6 +37,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-2',
+    image: PHOTOS.choco,
     storeId: 'dulce',
     collectionIds: ['dulce-tortas'],
     title: 'Chocotorta',
@@ -45,6 +49,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-3',
+    image: PHOTOS.cheese,
     storeId: 'dulce',
     collectionIds: ['dulce-tortas'],
     title: 'Cheesecake de frutos rojos',
@@ -56,6 +61,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-4',
+    image: PHOTOS.medialunas,
     storeId: 'dulce',
     collectionIds: ['dulce-masas'],
     title: 'Medialunas de manteca x 6',
@@ -67,6 +73,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-5',
+    image: PHOTOS.budin,
     storeId: 'dulce',
     collectionIds: ['dulce-masas'],
     title: 'Budín de limón y amapola',
@@ -78,6 +85,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-6',
+    image: PHOTOS.cookies,
     storeId: 'dulce',
     collectionIds: ['dulce-masas'],
     title: 'Cookies con chips x 6',
@@ -89,6 +97,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-7',
+    image: PHOTOS.cupcakes,
     storeId: 'dulce',
     collectionIds: ['dulce-masas', 'dulce-cajas'],
     title: 'Cupcakes x 4',
@@ -100,6 +109,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-8',
+    image: PHOTOS.desayuno,
     storeId: 'dulce',
     collectionIds: ['dulce-cajas'],
     title: 'Caja desayuno',
@@ -111,6 +121,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-dulce-9',
+    image: PHOTOS.merienda,
     storeId: 'dulce',
     collectionIds: ['dulce-cajas'],
     title: 'Caja merienda para dos',
@@ -123,6 +134,7 @@ export const DEMO_PRODUCTS: Product[] = [
   // Patitas
   {
     id: 'p-patitas-1',
+    image: PHOTOS.alimento,
     storeId: 'patitas',
     collectionIds: ['patitas-perros'],
     title: 'Alimento perro adulto',
@@ -134,6 +146,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-2',
+    image: PHOTOS.collar,
     storeId: 'patitas',
     collectionIds: ['patitas-perros'],
     title: 'Collar ajustable',
@@ -145,6 +158,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-3',
+    image: PHOTOS.cama,
     storeId: 'patitas',
     collectionIds: ['patitas-perros', 'patitas-gatos'],
     title: 'Cama acolchada',
@@ -156,6 +170,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-4',
+    image: PHOTOS.rascador,
     storeId: 'patitas',
     collectionIds: ['patitas-gatos'],
     title: 'Rascador torre',
@@ -167,6 +182,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-5',
+    image: PHOTOS.snacks,
     storeId: 'patitas',
     collectionIds: ['patitas-gatos'],
     title: 'Snacks de pescado',
@@ -178,6 +194,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-6',
+    image: PHOTOS.fuente,
     storeId: 'patitas',
     collectionIds: ['patitas-gatos'],
     title: 'Fuente bebedero',
@@ -189,6 +206,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-7',
+    image: PHOTOS.hueso,
     storeId: 'patitas',
     collectionIds: ['patitas-juguetes'],
     title: 'Hueso de goma',
@@ -200,6 +218,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-8',
+    image: PHOTOS.pelota,
     storeId: 'patitas',
     collectionIds: ['patitas-juguetes'],
     title: 'Pelota resistente x 2',
@@ -211,6 +230,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-patitas-9',
+    image: PHOTOS.varita,
     storeId: 'patitas',
     collectionIds: ['patitas-juguetes'],
     title: 'Varita con plumas',
@@ -223,6 +243,7 @@ export const DEMO_PRODUCTS: Product[] = [
   // Aurora Studio
   {
     id: 'p-aurora-1',
+    image: PHOTOS.campera,
     icon: 'weather-windy',
     storeId: 'aurora',
     collectionIds: ['aurora-new'],
@@ -237,6 +258,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-aurora-2',
+    image: PHOTOS.cargo,
     icon: 'hanger',
     storeId: 'aurora',
     collectionIds: ['aurora-new'],
@@ -248,6 +270,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-aurora-3',
+    image: PHOTOS.remera,
     icon: 'tshirt-v',
     storeId: 'aurora',
     collectionIds: ['aurora-basics'],
@@ -262,6 +285,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-aurora-4',
+    image: PHOTOS.buzo,
     icon: 'tshirt-crew',
     storeId: 'aurora',
     collectionIds: ['aurora-basics'],
@@ -274,6 +298,7 @@ export const DEMO_PRODUCTS: Product[] = [
   // Grano & Brasa
   {
     id: 'p-grano-1',
+    image: PHOTOS.etiopia,
     icon: 'seed',
     storeId: 'grano',
     collectionIds: ['grano-coffee'],
@@ -285,6 +310,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-grano-2',
+    image: PHOTOS.colombia,
     icon: 'coffee-outline',
     storeId: 'grano',
     collectionIds: ['grano-coffee'],
@@ -296,6 +322,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-grano-3',
+    image: PHOTOS.prensa,
     icon: 'coffee-maker',
     storeId: 'grano',
     collectionIds: ['grano-gear'],
@@ -308,6 +335,7 @@ export const DEMO_PRODUCTS: Product[] = [
   // Casa Lumen
   {
     id: 'p-lumen-1',
+    image: PHOTOS.lampara,
     icon: 'lamp',
     storeId: 'lumen',
     collectionIds: ['lumen-light'],
@@ -319,6 +347,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-lumen-2',
+    image: PHOTOS.vela,
     icon: 'candle',
     storeId: 'lumen',
     collectionIds: ['lumen-light'],
@@ -330,6 +359,7 @@ export const DEMO_PRODUCTS: Product[] = [
   },
   {
     id: 'p-lumen-3',
+    image: PHOTOS.manta,
     icon: 'sofa',
     storeId: 'lumen',
     collectionIds: ['lumen-textile'],

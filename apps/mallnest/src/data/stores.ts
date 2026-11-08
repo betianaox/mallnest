@@ -1,10 +1,13 @@
 import { type Store } from '@mallnest/core';
 
+import { PHOTOS } from './photos';
+
 // Tiendas de ejemplo (decisión 11). Son ficticias y se muestran como demo.
 // Más adelante este listado lo devuelve el backend en AWS.
 export const DEMO_STORES: Store[] = [
   {
     id: 'dulce',
+    cover: PHOTOS.cov_dulce,
     slug: 'dulce-horno',
     name: 'Dulce Horno',
     tagline: 'Pastelería artesanal, horneada cada mañana',
@@ -18,8 +21,8 @@ export const DEMO_STORES: Store[] = [
     },
     vitrina: {
       banners: [
-        { id: 'b1', title: 'Tortas por encargo', subtitle: 'Con 48 h de anticipación', collectionId: 'dulce-tortas', icon: 'cake-variant' },
-        { id: 'b2', title: 'Cajas para regalar', subtitle: 'Desayunos y meriendas', collectionId: 'dulce-cajas', icon: 'gift-outline' },
+        { id: 'b1', title: 'Tortas por encargo', subtitle: 'Con 48 h de anticipación', collectionId: 'dulce-tortas', icon: 'cake-variant', image: PHOTOS.ban_tortas },
+        { id: 'b2', title: 'Cajas para regalar', subtitle: 'Desayunos y meriendas', collectionId: 'dulce-cajas', icon: 'gift-outline', image: PHOTOS.ban_cajas },
       ],
       featuredCollectionIds: ['dulce-tortas', 'dulce-masas', 'dulce-cajas'],
     },
@@ -31,6 +34,7 @@ export const DEMO_STORES: Store[] = [
   },
   {
     id: 'patitas',
+    cover: PHOTOS.cov_patitas,
     slug: 'patitas',
     name: 'Patitas',
     tagline: 'Todo para tu perro y tu gato, con envío en el día',
@@ -44,8 +48,8 @@ export const DEMO_STORES: Store[] = [
     },
     vitrina: {
       banners: [
-        { id: 'b1', title: 'Semana del perro', subtitle: '15 % en alimentos', collectionId: 'patitas-perros', icon: 'dog' },
-        { id: 'b2', title: 'Mundo gato', subtitle: 'Rascadores y snacks', collectionId: 'patitas-gatos', icon: 'cat' },
+        { id: 'b1', title: 'Semana del perro', subtitle: '15 % en alimentos', collectionId: 'patitas-perros', icon: 'dog', image: PHOTOS.ban_perro },
+        { id: 'b2', title: 'Mundo gato', subtitle: 'Rascadores y snacks', collectionId: 'patitas-gatos', icon: 'cat', image: PHOTOS.ban_gato },
       ],
       featuredCollectionIds: ['patitas-perros', 'patitas-gatos', 'patitas-juguetes'],
     },
@@ -57,6 +61,7 @@ export const DEMO_STORES: Store[] = [
   },
   {
     id: 'aurora',
+    cover: PHOTOS.cov_aurora,
     slug: 'aurora-studio',
     name: 'Aurora Studio',
     tagline: 'Ropa urbana y básicos de autor',
@@ -70,8 +75,8 @@ export const DEMO_STORES: Store[] = [
     },
     vitrina: {
       banners: [
-        { id: 'b1', title: 'Nueva temporada', subtitle: 'Primavera / verano', collectionId: 'aurora-new', icon: 'hanger' },
-        { id: 'b2', title: 'Básicos', subtitle: 'Los que nunca fallan', collectionId: 'aurora-basics', icon: 'tshirt-crew' },
+        { id: 'b1', title: 'Nueva temporada', subtitle: 'Primavera / verano', collectionId: 'aurora-new', icon: 'hanger', image: PHOTOS.ban_moda },
+        { id: 'b2', title: 'Básicos', subtitle: 'Los que nunca fallan', collectionId: 'aurora-basics', icon: 'tshirt-crew', image: PHOTOS.ban_basicos },
       ],
       featuredCollectionIds: ['aurora-new', 'aurora-basics'],
     },
@@ -83,6 +88,7 @@ export const DEMO_STORES: Store[] = [
   },
   {
     id: 'grano',
+    cover: PHOTOS.cov_grano,
     slug: 'grano-y-brasa',
     name: 'Grano & Brasa',
     tagline: 'Café de especialidad tostado cada semana',
@@ -102,6 +108,7 @@ export const DEMO_STORES: Store[] = [
           subtitle: 'Etiopía Yirgacheffe',
           collectionId: 'grano-coffee',
           icon: 'coffee',
+          image: PHOTOS.ban_cafe,
         },
       ],
       featuredCollectionIds: ['grano-coffee', 'grano-gear'],
@@ -114,6 +121,7 @@ export const DEMO_STORES: Store[] = [
   },
   {
     id: 'lumen',
+    cover: PHOTOS.cov_lumen,
     slug: 'casa-lumen',
     name: 'Casa Lumen',
     tagline: 'Objetos y deco para habitar con calma',
@@ -127,8 +135,8 @@ export const DEMO_STORES: Store[] = [
     },
     vitrina: {
       banners: [
-        { id: 'b1', title: 'Luz cálida', subtitle: 'Lámparas y velas', collectionId: 'lumen-light', icon: 'floor-lamp' },
-        { id: 'b2', title: 'Textiles', subtitle: 'Mantas y almohadones', collectionId: 'lumen-textile', icon: 'sofa' },
+        { id: 'b1', title: 'Luz cálida', subtitle: 'Lámparas y velas', collectionId: 'lumen-light', icon: 'floor-lamp', image: PHOTOS.ban_luz },
+        { id: 'b2', title: 'Textiles', subtitle: 'Mantas y almohadones', collectionId: 'lumen-textile', icon: 'sofa', image: PHOTOS.ban_textil },
       ],
       featuredCollectionIds: ['lumen-light', 'lumen-textile'],
     },

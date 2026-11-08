@@ -3,6 +3,12 @@
 // - Store y StoreBrand vendrán del backend en AWS (DynamoDB).
 // - Collection y Product vendrán de la Storefront API de Shopify.
 
+/**
+ * Imagen: una URL (las fotos de Shopify) o un recurso empaquetado con la app
+ * (`require('./foto.jpg')`, las fotos de las tiendas de ejemplo).
+ */
+export type ImageRef = string | number;
+
 export type StoreStatus = 'pending' | 'approved';
 
 export type StoreCategory = 'Moda' | 'Cafetería' | 'Deco' | 'Pastelería' | 'Mascotas' | 'Otros';
@@ -29,7 +35,7 @@ export interface Banner {
   /** Ilustración del banner (nombre de un icono) mientras no haya foto. */
   icon?: string;
   /** Foto del banner; si está, reemplaza a la ilustración. */
-  image?: string;
+  image?: ImageRef;
 }
 
 export interface StoreVitrina {
@@ -52,6 +58,8 @@ export interface Store {
   featured: boolean;
   sortScore: number;
   status: StoreStatus;
+  /** Foto general de la tienda (el local, el rubro). */
+  cover?: ImageRef;
   /** Tiendas de ejemplo: se muestran identificadas como demo (decisión 17). */
   isDemo: boolean;
 }
@@ -79,7 +87,7 @@ export interface Product {
   /** Ilustración del producto (nombre de un icono) mientras no haya foto. */
   icon?: string;
   /** Foto del producto (de Shopify); si está, reemplaza a la ilustración. */
-  image?: string;
+  image?: ImageRef;
 }
 
 export interface CartLine {
@@ -89,7 +97,7 @@ export interface CartLine {
   currency: string;
   quantity: number;
   icon?: string;
-  image?: string;
+  image?: ImageRef;
   /** Variante elegida, ej: { Talle: "M", Color: "Negro" } */
   selectedOptions: Record<string, string>;
 }

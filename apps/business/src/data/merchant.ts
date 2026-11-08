@@ -1,5 +1,16 @@
 import { type Collection, type Product, type Store } from '@mallnest/core';
 
+// Fotos de ejemplo (Unsplash), empaquetadas con la app: assets/demo/CREDITOS.md.
+const PHOTO = {
+  frutillas: require('../../assets/demo/frutillas.jpg'),
+  alfajores: require('../../assets/demo/alfajores.jpg'),
+  marmolado: require('../../assets/demo/marmolado.jpg'),
+  boxcup: require('../../assets/demo/boxcup.jpg'),
+  manzana: require('../../assets/demo/manzana.jpg'),
+  cajas: require('../../assets/demo/ban_cajas.jpg'),
+  local: require('../../assets/demo/cov_dulce.jpg'),
+};
+
 // Datos de ejemplo del comerciante.
 // Más adelante:
 // - El catálogo sale de su tienda Shopify (Admin/Storefront API) al conectarla.
@@ -17,6 +28,7 @@ export const MERCHANT_COLLECTIONS: Collection[] = [
 export const MERCHANT_PRODUCTS: Product[] = [
   {
     id: 'mt-1',
+    image: PHOTO.frutillas,
     icon: 'cake-variant',
     storeId: MERCHANT_STORE_ID,
     collectionIds: ['mt-new'],
@@ -28,6 +40,7 @@ export const MERCHANT_PRODUCTS: Product[] = [
   },
   {
     id: 'mt-2',
+    image: PHOTO.alfajores,
     icon: 'cookie',
     storeId: MERCHANT_STORE_ID,
     collectionIds: ['mt-new', 'mt-gifts'],
@@ -39,6 +52,7 @@ export const MERCHANT_PRODUCTS: Product[] = [
   },
   {
     id: 'mt-3',
+    image: PHOTO.marmolado,
     icon: 'bread-slice',
     storeId: MERCHANT_STORE_ID,
     collectionIds: ['mt-sale'],
@@ -50,6 +64,7 @@ export const MERCHANT_PRODUCTS: Product[] = [
   },
   {
     id: 'mt-4',
+    image: PHOTO.boxcup,
     icon: 'cupcake',
     storeId: MERCHANT_STORE_ID,
     collectionIds: ['mt-gifts'],
@@ -61,6 +76,7 @@ export const MERCHANT_PRODUCTS: Product[] = [
   },
   {
     id: 'mt-5',
+    image: PHOTO.manzana,
     icon: 'food-apple',
     storeId: MERCHANT_STORE_ID,
     collectionIds: ['mt-sale', 'mt-new'],
@@ -91,9 +107,10 @@ export function createInitialStore(): Store {
     tagline: 'Contá en una frase qué vendés',
     category: 'Otros',
     brand: { ...BRAND_PALETTE[0], logoText: 'M' },
+    cover: PHOTO.local,
     vitrina: {
       banners: [
-        { id: 'banner-1', title: 'Bienvenidos', subtitle: 'Conocé lo nuevo', collectionId: 'mt-new', icon: 'gift-outline' },
+        { id: 'banner-1', title: 'Bienvenidos', subtitle: 'Conocé lo nuevo', collectionId: 'mt-new', icon: 'gift-outline', image: PHOTO.cajas },
       ],
       featuredCollectionIds: ['mt-new', 'mt-sale'],
     },
