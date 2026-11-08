@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { FlatList, Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { StoreCard } from '@/components/store-card';
 import { Screen, SearchBar, ThemeProvider, Txt } from '@mallnest/ui';
@@ -41,7 +41,13 @@ export default function StoresScreen() {
           keyboardShouldPersistTaps="handled"
           ListHeaderComponent={
             <View style={styles.header}>
-              <Txt variant="hero">Mallnest</Txt>
+              <Image
+                source={require('../../assets/images/wordmark.png')}
+                accessibilityRole="header"
+                accessibilityLabel="Mallnest"
+                resizeMode="contain"
+                style={styles.wordmark}
+              />
               <Txt variant="muted">Elegí una tienda para empezar</Txt>
               <Pressable
                 accessibilityRole="button"
@@ -79,6 +85,8 @@ export default function StoresScreen() {
 const styles = StyleSheet.create({
   content: { padding: spacing.lg, gap: spacing.md },
   header: { gap: spacing.xs, marginBottom: spacing.sm },
+  // El logotipo mide 1000 x 193.
+  wordmark: { width: 150, height: 29, marginBottom: spacing.xs },
   row: { gap: spacing.md },
   shopper: { marginTop: spacing.lg, padding: spacing.lg, borderRadius: radius.lg, gap: 2 },
 });
